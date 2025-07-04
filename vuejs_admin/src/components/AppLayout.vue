@@ -4,7 +4,7 @@
         <Siderbar :class="{'-ml-[200px]':!sidebarOpened}"/>
 
         <div class="flex-1">
-            <TopHeader @toggle-sidebar="toggleSidebar"/>
+            <Navbar @toggle-sidebar="toggleSidebar"/>
 
             <!-- Content -->
             <main class="p-5">
@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
-import {ref} from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 import Siderbar from './Siderbar.vue';
-import TopHeader from './TopHeader.vue';
+import Navbar from './Navbar.vue';
 
 const {title} = defineProps({
     title: String
@@ -30,6 +30,20 @@ const sidebarOpened = ref(true);
 
 function toggleSidebar(){
     sidebarOpened.value = !sidebarOpened.value
+}
+
+onMounted(() => {
+    handleSideBarUpdate()
+    window.addEventListener('resize', handleSideBarUpdate)
+})
+
+onUnmounted(() =>{
+    window.removeEventListener('resize', handleSideBarUpdate)
+})
+
+function handleSideBarUpdate(){
+    // if(window.outerWidth <= 768){ sidebarOpened.value = false }
+    sidebarOpened.value = window.outerWidth > 768;
 }
 </script>
 
