@@ -17,7 +17,7 @@ class AdminUserSeeder extends Seeder
             "first_name"=> "Admin",
             "last_name"=> "User",
             "email"=> "admin@example.com",
-            "email_verfied_at" => now(),
+            "email_verified_at" => now(),
             "phone" => "0123456789",
             "password" => bcrypt("admin123"),
             "is_admin" => true,
