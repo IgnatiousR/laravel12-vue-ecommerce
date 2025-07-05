@@ -12,7 +12,7 @@
                 <MenuButton
                 class="inline-flex w-full gap-2 items-center rounded-full cursor-pointer text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                 >
-                <img src="C:\xampp\htdocs\laravel12_vue_ecommerce\vuejs_admin\src\assets\user.jpg" class="w-10 rounded-full">
+                <img src="../assets/user.jpg" class="w-10 rounded-full">
                 John Doe
                 <ChevronDownIcon class=" h-5 w-5 text-neutral-400"/>
                 </MenuButton>
