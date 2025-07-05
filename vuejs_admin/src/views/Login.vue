@@ -36,10 +36,6 @@
 
 <script setup>
 import GuestLayout from '../components/GuestLayout.vue';
-
-// function login(){
-//     console.log("Login");
-// }
 </script>
 
 <style scoped>
