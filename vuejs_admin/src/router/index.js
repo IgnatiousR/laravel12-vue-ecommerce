@@ -8,6 +8,7 @@ import AppLayout from "../components/AppLayout.vue";
 import Products from "../views/Products.vue";
 import Users from "../views/Users.vue";
 import store from "../store";
+import NotFound from "../views/NotFound.vue";
 
 const routes = [
     {
@@ -38,22 +39,40 @@ const routes = [
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+        meta: {
+            requiresGuest: true
+        }
     },
     {
         path: '/register',
         name: 'register',
-        component: Register
+        component: Register,
+        meta: {
+            requiresGuest: true
+        }
+
     },
     {
         path: '/request-password',
         name: 'requestPassword',
-        component: RequestPassword
+        component: RequestPassword,
+        meta: {
+            requiresGuest: true
+        }
     },
     {
         path: '/reset-password/:token',
         name: 'resetPassword',
-        component: ResetPassword
+        component: ResetPassword,
+        meta: {
+            requiresGuest: true
+        }
+    },
+    {
+        path: '/:pathMatch(.*)',
+        name: 'notFound',
+        component: NotFound,
     },
 ];
 
@@ -75,6 +94,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !store.state.user.token) next({ name: 'login' })
+  else if (to.meta.requiresGuest && store.state.user.token) next({ name: 'app.dashboard' })
   else next()
 })
 
