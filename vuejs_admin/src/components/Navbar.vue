@@ -10,7 +10,7 @@
                 class="inline-flex w-full gap-2 items-center rounded-full cursor-pointer text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                 >
                 <img src="../assets/user.jpg" class="w-10 rounded-full">
-                <!-- John Doe -->
+                John Doe
                  {{ currendtUser.first_name }}
                 <ChevronDownIcon class=" h-5 w-5 text-neutral-400"/>
                 </MenuButton>
