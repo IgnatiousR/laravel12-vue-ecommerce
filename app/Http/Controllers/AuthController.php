@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function login(Request $request){
+        dd("Errors");
+
         $credentials = $request->validate([
-            "email"=> ["required","email"],
+            "email"=> ['required','email'],
             "password"=> 'required',
             'remember' => 'boolean'
         ]);
@@ -17,10 +19,12 @@ class AuthController extends Controller
         $remember = $credentials['remember'] ?? false;
         unset($credentials['remember']);
 
-        if(!Auth::attempt($credentials, $remember)){
+        if (!Auth::attempt($credentials, $remember)) {
             return response([
                 'message' => 'Wrong credentials'
             ], 422);
+            // return response( 'Wrong credentials'
+            // , 422);
         }
 
         /** @var \App\Models\User $user */
