@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
     <header class="h-14 flex justify-between items-center p-4 shadow-sm bg-white">
         <button @click="$emit('toggle-sidebar')" class="items-center hover:bg-black/10 cursor-pointer rounded transition-colors p-1">
@@ -13,7 +10,8 @@
                 class="inline-flex w-full gap-2 items-center rounded-full cursor-pointer text-sm font-medium text-black focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
                 >
                 <img src="../assets/user.jpg" class="w-10 rounded-full">
-                John Doe
+                <!-- John Doe -->
+                 {{ currendtUser.first_name }}
                 <ChevronDownIcon class=" h-5 w-5 text-neutral-400"/>
                 </MenuButton>
             </div>
@@ -43,6 +41,7 @@
                     </MenuItem>
                     <MenuItem v-slot="{ active }">
                     <button
+                    @click="logout"
                         :class="[
                         active ? 'bg-violet-600 text-white' : 'text-gray-900',
                         'group flex w-full items-center rounded-md px-2 py-2 text-sm',
@@ -95,6 +94,19 @@
 import { Bars3Icon, ArrowLeftEndOnRectangleIcon, UserIcon } from  '@heroicons/vue/24/outline';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import { ChevronDownIcon } from '@heroicons/vue/20/solid';
+import store from '../store';
+import { useRouter } from 'vue-router';
+import { computed } from 'vue';
 
-const emit = defineEmits(['toggle-sidebar'])
+const router = useRouter()
+
+const emit = defineEmits(['toggle-sidebar']);
+const currendtUser = computed(() => store.state.user.data);
+
+function logout() {
+    store.dispatch('logout')
+    .then(() => {
+        router.push({ name: 'login'})
+    })
+}
 </script>
