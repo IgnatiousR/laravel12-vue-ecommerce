@@ -1,5 +1,5 @@
 <template>
-    <div class="flex min-h-full" v-if="currendtUser.id">
+    <div class="flex min-h-full" >
         <!-- Sidebar -->
         <Siderbar :class="{'-ml-[200px]':!sidebarOpened}"/>
 
@@ -15,7 +15,7 @@
         </div>
 
     </div>
-    <div v-else class="min-h-full bg-neutral-200 flex items-center justify-center">
+    <!-- <div v-else class="min-h-full bg-neutral-200 flex items-center justify-center">
         <div class="flex flex-col items-center">
             <svg v-if="loading" class="mr-3 -ml-1 size-10 animate-spin text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -23,7 +23,7 @@
             </svg>
             <p class="mt-2">Please Wait ...</p>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script setup>
